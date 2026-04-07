@@ -11,4 +11,13 @@ const login = (req, res) => {
 		message: `Login user with username: ${username} and password: ${password}`,
 	});
 };
-export { register, login };
+
+const verifyEmail = (req, res) => {
+	const { email } = req.body;
+	const otp = Math.floor(100000 + Math.random() * 900000);
+	res.json({
+		message: `Verify email: ${email} please check your email`,
+	});
+};
+
+export { register, login, verifyEmail };
