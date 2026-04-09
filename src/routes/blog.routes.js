@@ -1,8 +1,10 @@
 import { Router } from "express";
 import {
 	createBlog,
+	deleteBlog,
 	getBlogById,
 	getBlogs,
+	updateBlog,
 } from "../controllers/blog.controller.js";
 
 const blogRouter = Router();
@@ -30,18 +32,8 @@ blogRouter.get("/", getBlogs);
 blogRouter.post("/", isLoginedIn, checkPermission, createBlog);
 blogRouter.get("/:id", getBlogById);
 
-blogRouter.put("/:id", (req, res) => {
-	const { id } = req.params;
-	res.json({
-		message: `Update blog with ID: ${id}`,
-	});
-});
+blogRouter.put("/:id", updateBlog);
 
-blogRouter.delete("/:id", (req, res) => {
-	const { id } = req.params;
-	res.json({
-		message: `Delete blog with ID: ${id}`,
-	});
-});
+blogRouter.delete("/:id", deleteBlog);
 
 export default blogRouter;

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import blogRouter from "./routes/blog.routes.js";
 import authRouter from "./routes/auth.routes.js";
+import connectDatabase from "./config/database.js";
 
 const app = express();
 const port = 4000;
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 app.use("/blogs", blogRouter);
 app.use("/auth", authRouter);
 
+connectDatabase();
 app.listen(port, () => {
 	console.log(`Server is running on port http://localhost:${port}`);
 });
