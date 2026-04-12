@@ -1,11 +1,15 @@
 import express from "express";
 import cors from "cors";
+import { configDotenv } from "dotenv";
 import blogRouter from "./routes/blog.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import connectDatabase from "./config/database.js";
 
+// Load environment variables from .env file
+configDotenv();
+
 const app = express();
-const port = 4000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
